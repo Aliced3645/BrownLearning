@@ -8,12 +8,13 @@ typedef struct{
 
 void* server(void *arg){
 	int i = 0;
+	int r = 15;
 	while(1){
 		printf("%d\n",i);
 		i ++;
 		if(i == 10)
 		{
-			pthread_exit(0);
+			pthread_exit((void*)&r);
 		}
 	}
 
@@ -21,11 +22,16 @@ void* server(void *arg){
 
 pthread_t start_servers(){
 	pthread_t thread;
+	pthread_attr_t attr;
+	pthread_attr_init(&attr);
+	pthread_attr_setstacksize(&attr,20*1024*1024);
 	int i;
+	void **r = 0;
 	for(i = 0; i < 5; i ++)
 	{
-		pthread_create(&thread,0,server,0);
-		pthread_join(thread,0);	
+		pthread_create(&thread,&attr,server,0);
+		pthread_join(thread,r);	
+		//printf("%d\n", (int)(*((int**)r)[1]));
 	}
 	return thread;
 
