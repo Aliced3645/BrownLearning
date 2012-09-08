@@ -1,6 +1,6 @@
 #include "stdio.h"
 #include <pthread.h>
-
+//some changes
 
 typedef struct{
 	int first,second;
