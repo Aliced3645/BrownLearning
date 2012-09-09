@@ -1,6 +1,6 @@
 CC = gcc
 DEBUGFLAGS = -g -Wall
-#CFLAGS = -D_REENTRANT $(DEBUGFLAGS) -D_XOPEN_SOURCE=500
+CFLAGS = -D_REENTRANT $(DEBUGFLAGS) -D_XOPEN_SOURCE=500
 LDFLAGS = -lpthread -pthread
 
 all: network_exercise thread_exercise server client
