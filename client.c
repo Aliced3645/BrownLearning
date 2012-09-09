@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <memory.h>
+#include <inttypes.h>
+
 #define MAX_LENGTH 256
 int main(int argc, char** argv)
 {
